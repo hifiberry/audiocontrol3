@@ -1,0 +1,9 @@
+#!/usr/bin/make -f
+export DH_VERBOSE = 1
+export PYBUILD_NAME = audiocontrol3
+
+%:
+	dh $@ --with python3 --buildsystem=pybuild --with systemd
+
+override_dh_installsystemd:
+	dh_installsystemd --name=audiocontrol3

@@ -1,0 +1,13 @@
+Source: audiocontrol3
+Section: sound
+Priority: optional
+Maintainer: HiFiBerry <info@hifiberry.com>
+Build-Depends: debhelper (>=11), dh-python, python3-all, python3-setuptools, dh-systemd
+Standards-Version: 4.1.3
+Homepage: https://www.hifiberry.com
+
+Package: audiocontrol3
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}, python3-flask, adduser
+Description: AudioControl3 - Audio control system for HiFiBerry
+ AudioControl3 provides audio control features with a REST API.

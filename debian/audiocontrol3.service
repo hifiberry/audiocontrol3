@@ -1,0 +1,16 @@
+[Unit]
+Description=AudioControl3 Server
+After=network.target
+[Service]
+Type=simple
+User=audiocontrol
+Group=audio
+ExecStart=/usr/bin/audiocontrol3-server
+Restart=on-failure
+RestartSec=5
+StandardOutput=syslog
+StandardError=syslog
+SyslogIdentifier=audiocontrol3
+
+[Install]
+WantedBy=multi-user.target

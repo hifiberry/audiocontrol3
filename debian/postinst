@@ -1,0 +1,23 @@
+#!/bin/sh
+set -e
+
+# Create audiocontrol user if it doesn't exist
+if ! getent passwd audiocontrol > /dev/null; then
+    adduser --quiet --system --group --no-create-home --home /nonexistent audiocontrol
+fi
+
+# Add the audiocontrol user to the audio group
+if getent group audio > /dev/null; then
+    adduser --quiet audiocontrol audio
+fi
+
+# Enable and start the service if systemd is available
+if [ -d /run/systemd/system ]; then
+    systemctl --system daemon-reload >/dev/null || true
+    systemctl enable audiocontrol3.service >/dev/null || true
+    systemctl restart audiocontrol3.service >/dev/null || true
+fi
+
+#DEBHELPER#
+
+exit 0
